@@ -12,7 +12,7 @@ const pool = new Pool({
 
 async function getSongsByChord(chord_input) {
     try {
-      const query = 'SELECT ukulele_songs.song_name FROM ukulele_songs INNER JOIN chords ON ukulele_songs.id = chords.song_id WHERE chords.chord = $1';
+      const query = 'SELECT ukulele_songs.song_name, ukulele_songs.song_url FROM ukulele_songs INNER JOIN chords ON ukulele_songs.id = chords.song_id WHERE chords.chord = $1';
       const values = [chord_input];
       const results = await pool.query(query, values);
       return results.rows
