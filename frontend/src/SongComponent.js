@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function SongComponent() {
   const [chordInput, setChordInput] = useState("");
   const [songNames, setSongNames] = useState([]);
+  const [searched, setSearched] = useState(false);
 
 
   const handleInputChange = (event) => {
@@ -20,6 +21,7 @@ function SongComponent() {
       const response = await fetch(`/api/songs/${chordInput}`);
       const data = await response.json();
       setSongNames(data.song_names);
+      setSearched(true);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -27,26 +29,27 @@ function SongComponent() {
 
   
 
+  
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <label>
           Enter a chord:
-          <input type="text" value={chordInput} onChange={handleInputChange} />
+          <input className="text_box" type="text" value={chordInput} onChange={handleInputChange} />
         </label>
-        <button type="submit">Submit</button>
+        <button className="submit_button" type="submit">Submit</button>
       </form>
-      {songNames.length > 0 ? (
-        <ol>
+      {searched && songNames.length === 0 ? ( // only show "No songs found" if searched is true and no songs were found
+        <p>No songs found.</p>
+      ) : songNames.length > 0 ? (
+        <ol className= "song_list">
           {songNames.map((song) => (
           <li key={song.song_name}>
-            <a href={song.song_url} target="_blank" rel="noopener noreferrer">{song.song_name}</a> ({song.song_url})
+            <a href={song.song_url} target="_blank" rel="noopener noreferrer">{song.song_name}</a> 
           </li>
            ))}
         </ol>
-      ) : (
-        <p>No songs found.</p>
-      )}
+      ) : null} {/* don't display anything if search hasn't been submitted yet */}
     </div>
   );
 }
