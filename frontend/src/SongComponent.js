@@ -45,7 +45,7 @@ function SongComponent() {
         <ol className= "song_list">
           {songNames.map((song) => (
           <li key={song.song_name}>
-            <a href={song.song_url} target="_blank" rel="noopener noreferrer">{song.song_name}</a> 
+            <a href={song.song_url} target="_blank" rel="noopener noreferrer">{song.song_name} by {song.song_artist}</a> 
           </li>
            ))}
         </ol>

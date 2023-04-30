@@ -22,7 +22,7 @@ a {
 .text_box {
   position:relative;
   font-size: 1em;
-  background: linear-gradient(21deg, #65956a, #10570c);
+  background: linear-gradient(21deg, #65956a, #f3faf2);
   padding: 3px;
   display: inline-block;
   /*border-radius: 9999em;*/
