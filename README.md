@@ -5,7 +5,7 @@ A full stack app that allows the user to enter a chord name and will return popu
 To run the backend:
 
 ```bash
-node index.js
+npm start
 ```
 
 To run the frontend:
