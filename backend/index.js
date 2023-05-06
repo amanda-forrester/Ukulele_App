@@ -1,12 +1,12 @@
-const { Server } = require('@vercel/node');
-const db = require('./queries');
+import { Server } from '@vercel/node';
+import { getSongsByChord } from './queries';
 
 const server = new Server();
 
 server.get("/api/songs/:chord", async (req, res) => {
   const { chord } = req.params;
   try {
-    const songNames = await db.getSongsByChord(chord);
+    const songNames = await getSongsByChord(chord);
     res.json({ song_names: songNames });
   } catch (error) {
     console.error("Error getting songs:", error);
@@ -14,7 +14,7 @@ server.get("/api/songs/:chord", async (req, res) => {
   }
 });
 
-module.exports = server;
+export default server;
 
 
 /*const express = require('express');
