@@ -1,5 +1,5 @@
 const app = require('express')();
-const db = require('../queries');
+const db = require('../queries').default;
 
 
 app.get("/api/songs/:chord", async (req, res) => {
