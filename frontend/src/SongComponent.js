@@ -18,7 +18,7 @@ function SongComponent() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`/api/songs/${chordInput}`);
+      const response = await fetch(`https://ukulele-appbackend.vercel.app/api/songs/${chordInput}`);
       const data = await response.json();
       setSongNames(data.song_names);
       setSearched(true);
