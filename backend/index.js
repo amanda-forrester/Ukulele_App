@@ -4,8 +4,6 @@ const db = require('./queries');
 
 const app = express();
 
-app.get('/', (req, res) => {res.send('hello world!')})
-
 
 app.get("/api/songs/:chord", async (req, res) => {
     const { chord } = req.params;
